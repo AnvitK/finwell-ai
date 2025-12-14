@@ -7,7 +7,13 @@ import { DUMMY_DATA } from '@/lib/dummyData';
 
 export default function InsightsPage() {
     const { goals, expenses } = DUMMY_DATA;
-    const emergencyFund = goals.EmergencyFund;
+    const { goals, expenses } = DUMMY_DATA;
+    // Fix: Access correct key 'emergency_fund' and map to structure expected by GoalCard
+    const emergencyFund = {
+        name: "Emergency Fund",
+        saved: goals.emergency_fund.saved,
+        goalAmount: goals.emergency_fund.target
+    };
 
     return (
         <div className="min-h-screen bg-gray-50 pb-24">
