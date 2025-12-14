@@ -14,7 +14,8 @@ import {
 import { DUMMY_DATA } from '@/lib/dummyData';
 
 export default function ProfilePage() {
-    const { user, banking, goals } = DUMMY_DATA;
+    // Fix: correct destructuring matching dummyData structure
+    const { personal_info: user, banking, goals } = DUMMY_DATA;
     // Fix: Access accounts from banking object and savings from goals
     const accounts = banking.accounts;
     const savings = goals.emergency_fund.saved;
