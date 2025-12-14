@@ -5,8 +5,17 @@ import TrendLineChart from '@/components/charts/TrendLineChart';
 import { DUMMY_DATA } from '@/lib/dummyData';
 
 export default function SpendingPage() {
-    const { expenses, insights } = DUMMY_DATA;
-    const totalSpent = Object.values(expenses).reduce((a, b) => a + b, 0);
+    const { spending } = DUMMY_DATA;
+    const totalSpent = spending.monthly_spend;
+
+    // Mock missing data for UI
+    const insights = { transactionsCount: 12 };
+    const transactions = [
+        { id: 1, description: "Grocery Store", date: "Today, 10:23 AM", amount: 450 },
+        { id: 2, description: "Uber Ride", date: "Yesterday, 6:45 PM", amount: 320 },
+        { id: 3, description: "Netflix Subscription", date: "Dec 12, 2025", amount: 649 },
+        { id: 4, description: "Starbucks", date: "Dec 11, 2025", amount: 280 },
+    ];
 
     return (
         <div className="min-h-screen bg-gray-50 pb-24">
@@ -35,7 +44,7 @@ export default function SpendingPage() {
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
                     <h3 className="text-gray-900 font-semibold mb-4">Category-wise Spend</h3>
                     <div className="h-48 w-full">
-                        <SpendingBarChart expenses={expenses} />
+                        <SpendingBarChart expenses={spending.top_categories} />
                     </div>
                 </div>
 
@@ -51,7 +60,7 @@ export default function SpendingPage() {
                 <div>
                     <h3 className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-3">Recent Transactions</h3>
                     <div className="space-y-3">
-                        {DUMMY_DATA.transactions.map((tx) => (
+                        {transactions.map((tx) => (
                             <div key={tx.id} className="bg-white p-4 rounded-xl flex justify-between items-center shadow-sm">
                                 <div>
                                     <p className="font-semibold text-gray-800">{tx.description}</p>
