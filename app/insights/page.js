@@ -6,7 +6,7 @@ import TrendLineChart from '@/components/charts/TrendLineChart'; // Reuse for no
 import { DUMMY_DATA } from '@/lib/dummyData';
 
 export default function InsightsPage() {
-    const { goals, expenses } = DUMMY_DATA;
+    const { goals, spending } = DUMMY_DATA;
     // Fix: Access correct key 'emergency_fund' and map to structure expected by GoalCard
     const emergencyFund = {
         name: "Emergency Fund",
@@ -74,7 +74,7 @@ export default function InsightsPage() {
                 <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
                     <h3 className="text-gray-900 font-semibold mb-4">Expense Analysis</h3>
                     <div className="h-48 w-full">
-                        <SpendingBarChart expenses={expenses} />
+                        <SpendingBarChart expenses={spending.top_categories} />
                     </div>
                 </div>
             </div>
