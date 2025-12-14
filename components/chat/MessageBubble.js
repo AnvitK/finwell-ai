@@ -20,6 +20,12 @@ export default function MessageBubble({ role, message }) {
                 "max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed",
                 isUser ? "bg-black text-white rounded-tr-sm" : "bg-white text-gray-800 shadow-sm border border-gray-100 rounded-tl-sm"
             )}>
+                {message.isFallback && (
+                    <div className="flex items-center gap-1.5 mb-2 pb-2 border-b border-yellow-100">
+                        <span className="w-2 h-2 rounded-full bg-yellow-500"></span>
+                        <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide">Offline Mode (Demo Data)</span>
+                    </div>
+                )}
                 {message.content && <p className={cn("mb-2", !data && "mb-0")}>{message.content}</p>}
 
                 {!isUser && type === 'insight' && <InsightCard data={data} onAction={console.log} />}

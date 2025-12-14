@@ -96,6 +96,11 @@ export default function ChatInterface() {
                         <PaperAirplaneIcon className="w-5 h-5" />
                     </button>
                 </div>
+                <div className="text-center mt-2">
+                    <span className="text-[10px] text-gray-400 flex items-center justify-center gap-1">
+                        Powered by <span className="font-semibold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Google Gemini</span>
+                    </span>
+                </div>
             </div>
         </div>
     );
