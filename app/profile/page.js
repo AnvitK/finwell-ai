@@ -14,8 +14,13 @@ import {
 import { DUMMY_DATA } from '@/lib/dummyData';
 
 export default function ProfilePage() {
-    const { user, accounts, savings } = DUMMY_DATA;
-    const totalBalance = accounts.reduce((acc, curr) => acc + curr.balance, 0);
+    const { user, banking, goals } = DUMMY_DATA;
+    // Fix: Access accounts from banking object and savings from goals
+    const accounts = banking.accounts;
+    const savings = goals.emergency_fund.saved;
+
+    // Fix: Add safety check for reduce
+    const totalBalance = accounts ? accounts.reduce((acc, curr) => acc + curr.balance, 0) : 0;
 
     const settings = [
         { icon: BellIcon, label: 'Notifications', value: 'On' },
